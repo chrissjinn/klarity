@@ -1,12 +1,12 @@
 # KLARITY
 
 ## Inspiration 
-Many members of our team enjoy thrifting & buying used products but we've oftentimes had to bargain & haggle to acquire an item. This process oftentimes results in one party paying too much/too little and is overall an unpleasant experience. We thought it would be cool to build a solution that allows buyers to know if they're paying too much for a used good and inform sellers of the going market rate so they can correctly price their items. 
+Many members of our team enjoy thrifting & buying used products, but we've oftentimes had to bargain & haggle to acquire an item. This process oftentimes results in one party paying too much/too little and is overall an unpleasant experience. We thought it would be cool to build a solution that allows buyers to know if they're paying too much for a used good and inform sellers of the going market rate so they can correctly price their items. 
 
-What really solidified our decision is that we discovered that the used goods market is growing at a rapid pace and we believe our solution can encourage more people to <b>"renew, rather than by new."</b>
+What really solidified our decision is that we discovered that the used goods market is growing at a rapid pace and we believe our solution can encourage more people to <b>"renew, rather than buy new."</b>
 
 ## What it does
-Klarity is an advanced search engine that tracks the price of used goods over time. Feel free to enter any query and Klarity will visualize the price trend results to you instantly!
+Klarity is an advanced search engine that tracks the price of used goods over time. Feel free to enter any query and Klarity will visualize the price trend results for you instantly!
 
 The reason we are able to provide such data is because it is powered by a powerful web scraper that uses multiprocessing to scrape thousands of websites in mere minutes. Furthermore, we built an advanced labeller & tagger that goes through our scraped results and adds additional tags to the data to provide our users with additional context.
 
@@ -15,13 +15,13 @@ The reason we are able to provide such data is because it is powered by a powerf
 ### Architecture
 <img src="https://github.com/philipk19238/klarity/blob/master/readme_data/architecture.png?raw=true">
 
-The Klarity backend is comprised into three main sections - scraper, labeller, and API. 
+The Klarity backend is comprised into three main sections - the scraper, labeller, and API. 
 
 ### Scraper 
 https://github.com/philipk19238/klarity/tree/master/api/app/scraper
 
 Our scraper uses a two step process to parse websites. First, it seeds our Mongo database with tens of thousands of "scrape-able" links using a DFS algorithm.
-This process is designed to be a background job that scrapes new links for our scraper to process and will stop once it detects a link it already scraped. 
+This process is designed to be a background job that scrapes new links for our scraper to process, and will stop once it detects a link it already scraped. 
 Afterwards, we paginate over those results and utlize multiprocessing & caching to quickly scrape, label, and save the data into our database. We originally designed this
 scraper to be asynchronous but could not implement due to time constraints
 
